@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% block content %}
+<table class="table">
+  <thead>
+    <tr>
+      <th>pk</th>
+      <th>Torrent Name</th>
+      <th>Torrent Link</th>
+      <th>delete</th>
+    </tr>
+  </thead>
+  <tbody>
+  {% for i in allTorrents %}
+      <tr>
+        <th scope="row">{{ i.pk }}</th>
+        <td>{{ i.torrentName }}</td>
+        <td><a href='{{ i.torrentLink }}'>{{ i.torrentLink }}</a></td>
+        <td><a href="{% url 'delete_torrent' i.id %}">delete</a></td>
+      </tr>
+  {% endfor %}
+  </tbody>
+</table>
+{% endblock content %}

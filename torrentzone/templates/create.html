@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+{% block content %}
+  <form method='POST' action=''>{% csrf_token %}
+  {{ torForm.as_p }}
+
+  <input class='btn btn-default' type='submit' value='Submit' />
+
+  </form>
+{% endblock %}
