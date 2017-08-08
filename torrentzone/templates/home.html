@@ -10,14 +10,30 @@
     </tr>
   </thead>
   <tbody>
-  {% for i in allTorrents %}
-      <tr>
-        <th scope="row">{{ i.pk }}</th>
-        <td>{{ i.torrentName }}</td>
-        <td><a href='{{ i.torrentLink }}'>{{ i.torrentLink }}</a></td>
-        <td><a href="{% url 'delete_torrent' i.id %}">delete</a></td>
-      </tr>
-  {% endfor %}
+      {% for i in torrents %}
+          <tr>
+            <th scope="row">{{ i.pk }}</th>
+            <td>{{ i.torrentName }}</td>
+            <td><a href='{{ i.torrentLink }}'>{{ i.torrentLink }}</a></td>
+            <td><a href="{% url 'delete_torrent' i.id %}">delete</a></td>
+          </tr>
+      {% endfor %}
+
+      <div class="pagination">
+        <span class="step-links">
+            {% if torrents.has_previous %}
+                <a href="?page={{ torrents.previous_page_number }}">previous</a>
+            {% endif %}
+
+            <span class="current">
+                Page {{ torrents.number }} of {{ torrents.paginator.num_pages }}.
+            </span>
+
+            {% if torrents.has_next %}
+                <a href="?page={{ torrents.next_page_number }}">next</a>
+            {% endif %}
+        </span>
+    </div>
   </tbody>
 </table>
 {% endblock content %}
