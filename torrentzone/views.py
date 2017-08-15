@@ -44,3 +44,10 @@ def delete_torrent(request, pk):
         x = torrentModel.objects.get(pk=pk)
         x.delete()
     return redirect("home")
+
+def torrent_details(request, pk):
+    x = torrentModel.objects.get(pk=pk)
+    context = {
+        "obj": x,
+    }
+    return render (request,"details.html",context)

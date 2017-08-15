@@ -7,6 +7,7 @@
       <th>Torrent Name</th>
       <th>Torrent Link</th>
       <th>delete</th>
+      <th>details</th>
     </tr>
   </thead>
   <tbody>
@@ -16,6 +17,7 @@
             <td>{{ i.torrentName }}</td>
             <td><a href='{{ i.torrentLink }}'>{{ i.torrentLink }}</a></td>
             <td><a href="{% url 'delete_torrent' i.id %}">delete</a></td>
+            <td><a href="{% url 'torrent_details' i.id %}">details</a></td>
           </tr>
       {% endfor %}
 
